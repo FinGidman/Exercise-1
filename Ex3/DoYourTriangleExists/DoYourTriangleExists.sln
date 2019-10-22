@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoYourTriangleExists", "DoYourTriangleExists\DoYourTriangleExists.csproj", "{4BB945A2-6B27-40A8-8339-1E03B0C4434F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoYourTriangleExists.Tests", "DoYourTriangleExists Tests\DoYourTriangleExists.Tests.csproj", "{A626E3FA-3305-46F1-A0F0-5CC137FD28AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BB945A2-6B27-40A8-8339-1E03B0C4434F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BB945A2-6B27-40A8-8339-1E03B0C4434F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BB945A2-6B27-40A8-8339-1E03B0C4434F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BB945A2-6B27-40A8-8339-1E03B0C4434F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A626E3FA-3305-46F1-A0F0-5CC137FD28AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A626E3FA-3305-46F1-A0F0-5CC137FD28AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A626E3FA-3305-46F1-A0F0-5CC137FD28AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A626E3FA-3305-46F1-A0F0-5CC137FD28AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {40CC81C7-4663-465C-A390-5135B386A99F}
+	EndGlobalSection
+EndGlobal

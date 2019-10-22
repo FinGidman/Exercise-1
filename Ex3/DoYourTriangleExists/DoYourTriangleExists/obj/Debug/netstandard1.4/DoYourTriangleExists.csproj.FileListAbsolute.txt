@@ -1,0 +1,16 @@
+E:\3 курс\DoYourTriangleExists\DoYourTriangleExists\bin\Debug\netstandard1.4\DoYourTriangleExists.deps.json
+E:\3 курс\DoYourTriangleExists\DoYourTriangleExists\bin\Debug\netstandard1.4\DoYourTriangleExists.dll
+E:\3 курс\DoYourTriangleExists\DoYourTriangleExists\bin\Debug\netstandard1.4\DoYourTriangleExists.pdb
+E:\3 курс\DoYourTriangleExists\DoYourTriangleExists\obj\Debug\netstandard1.4\DoYourTriangleExists.csproj.CoreCompileInputs.cache
+E:\3 курс\DoYourTriangleExists\DoYourTriangleExists\obj\Debug\netstandard1.4\DoYourTriangleExists.AssemblyInfo.cs
+E:\3 курс\DoYourTriangleExists\DoYourTriangleExists\obj\Debug\netstandard1.4\DoYourTriangleExists.dll
+E:\3 курс\DoYourTriangleExists\DoYourTriangleExists\obj\Debug\netstandard1.4\DoYourTriangleExists.pdb
+E:\3 курс\DoYourTriangleExists\DoYourTriangleExists\obj\Debug\netstandard1.4\DoYourTriangleExists.csprojAssemblyReference.cache
+E:\epam_trainings\Ex\Ex31\DoYourTriangleExists\DoYourTriangleExists\bin\Debug\netstandard1.4\DoYourTriangleExists.deps.json
+E:\epam_trainings\Ex\Ex31\DoYourTriangleExists\DoYourTriangleExists\bin\Debug\netstandard1.4\DoYourTriangleExists.dll
+E:\epam_trainings\Ex\Ex31\DoYourTriangleExists\DoYourTriangleExists\bin\Debug\netstandard1.4\DoYourTriangleExists.pdb
+E:\epam_trainings\Ex\Ex31\DoYourTriangleExists\DoYourTriangleExists\obj\Debug\netstandard1.4\DoYourTriangleExists.csprojAssemblyReference.cache
+E:\epam_trainings\Ex\Ex31\DoYourTriangleExists\DoYourTriangleExists\obj\Debug\netstandard1.4\DoYourTriangleExists.csproj.CoreCompileInputs.cache
+E:\epam_trainings\Ex\Ex31\DoYourTriangleExists\DoYourTriangleExists\obj\Debug\netstandard1.4\DoYourTriangleExists.AssemblyInfo.cs
+E:\epam_trainings\Ex\Ex31\DoYourTriangleExists\DoYourTriangleExists\obj\Debug\netstandard1.4\DoYourTriangleExists.dll
+E:\epam_trainings\Ex\Ex31\DoYourTriangleExists\DoYourTriangleExists\obj\Debug\netstandard1.4\DoYourTriangleExists.pdb
