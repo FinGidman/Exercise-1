@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Lab5_WebDriver.Pages
+namespace Lab5_WebDriver.Actions
 {
     class AdditionalCriterias
     {

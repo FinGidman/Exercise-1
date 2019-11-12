@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.PageObjects;
-using Lab5_WebDriver.Pages;
+using Lab5_WebDriver.Actions;
 using System.Threading;
 using OpenQA.Selenium.Support.UI;
 

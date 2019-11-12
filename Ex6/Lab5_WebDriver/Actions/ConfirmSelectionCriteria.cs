@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab5_WebDriver.Pages
+namespace Lab5_WebDriver.Actions
 {
     class ConfirmSelectionCriteria
     {
