@@ -19,7 +19,7 @@ namespace Lab5_WebDriver
         {
             Browser = new ChromeDriver();
             Browser.Navigate().GoToUrl("http://nationalrail.co.uk");
-            //Browser.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(10);
+            
             FromToStations fromToStations = new FromToStations(Browser).InputStations("Manchester", "London");
 
             Browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
@@ -32,7 +32,7 @@ namespace Lab5_WebDriver
         {
             Browser = new ChromeDriver();
             Browser.Navigate().GoToUrl("http://nationalrail.co.uk");
-            //Browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            
             FromToStations fromToStations = new FromToStations(Browser).InputStations("Manchester", "London");
 
             AdditionalCriterias additionalCriterias = new AdditionalCriterias(Browser).AdditionalCriteriasChoise();
