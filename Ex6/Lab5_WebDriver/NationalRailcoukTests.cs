@@ -14,23 +14,25 @@ namespace Lab5_WebDriver
     {
         IWebDriver Browser;
 
-        [TestMethod]
-        public void BuyingTicketWithoutSpecifyingInforamtionAboutArriveAndDepartue()
+        [TestInitialize]
+        public void Setup()
         {
             Browser = new ChromeDriver();
             Browser.Navigate().GoToUrl("http://nationalrail.co.uk");
+        }
+
+        [TestMethod]
+        public void BuyingTicketWithoutSpecifyingInforamtionAboutArriveAndDepartue()
+        {
             FromToStations fromToStations = new FromToStations(Browser).InputStations("Manchester", "London");
 
             Browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             ConfirmSelectionCriteria confirmSelectionCriteria = new ConfirmSelectionCriteria(Browser).ClickSearchButton();
-            Browser.Quit();
         }
 
         [TestMethod]
         public void FirstClassTickets()
         {
-            Browser = new ChromeDriver();
-            Browser.Navigate().GoToUrl("http://nationalrail.co.uk");
             FromToStations fromToStations = new FromToStations(Browser).InputStations("Manchester", "London");
 
             AdditionalCriterias additionalCriterias = new AdditionalCriterias(Browser).AdditionalCriteriasChoise();
@@ -38,6 +40,11 @@ namespace Lab5_WebDriver
             Thread.Sleep(3000);
             
             ConfirmSelectionCriteria confirmSelectionCriteria = new ConfirmSelectionCriteria(Browser).ClickSearchButton();
+        }
+
+        [TestCleanup]
+        public void Clean()
+        {
             Browser.Quit();
         }
     }
