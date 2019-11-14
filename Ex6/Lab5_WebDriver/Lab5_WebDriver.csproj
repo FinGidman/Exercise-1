@@ -56,12 +56,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\AdditionalCriterias.cs" />
+    <Compile Include="Actions\ConfirmSelectionCriteria.cs" />
+    <Compile Include="Actions\FromToStations.cs" />
     <Compile Include="NationalRailcoukTests.cs" />
-    <Compile Include="Pages\AdditionalCriterias.cs" />
-    <Compile Include="Pages\ConfirmSelectionCriteria.cs" />
-    <Compile Include="Pages\FromToStations.cs" />
-    <Compile Include="Pages\HomePage.cs" />
-    <Compile Include="Pages\SignInPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
