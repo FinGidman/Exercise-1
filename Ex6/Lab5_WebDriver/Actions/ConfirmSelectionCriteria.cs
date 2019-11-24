@@ -10,7 +10,7 @@ namespace Lab5_WebDriver.Actions
 {
     class ConfirmSelectionCriteria
     {
-        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Go')]"/*"/html/body/div[5]/form/div/div[1]/div[1]/button"*/)]
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Go')]")]
         private IWebElement searchButton { get; set; }
 
         public ConfirmSelectionCriteria(IWebDriver browser)

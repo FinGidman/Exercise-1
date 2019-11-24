@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +26,19 @@ namespace Lab5_WebDriver.Actions
 
         public AdditionalCriterias AdditionalCriteriasChoise()
         {
-            additionalcriteriaslist.Click();
             standardClassCheckbox.Click();
-            Thread.Sleep(3000);
+            return this;
+        }
+
+        public AdditionalCriterias OpenAdditionalCriteriasForm()
+        {
+            additionalcriteriaslist.Click();
+
+            return this;
+        }
+
+        public AdditionalCriterias CloseAdditionalCriteriasForm()
+        {
             additionalcriteriaslist.Click();
             return this;
         }
