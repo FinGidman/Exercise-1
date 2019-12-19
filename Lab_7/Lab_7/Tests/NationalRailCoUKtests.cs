@@ -93,9 +93,11 @@ namespace Lab7.Tests
                 .AcceptCookies(Driver)
                 .GoToStationAndTrainInfoPage()
                 .InputStationAndSearch(RouteCreator.InputStationName());
+
+            Assert.IsNotNull(Driver.FindElement(By.XPath("//abbr[contains(text(),'PAD')]")));
         }
 
-        //7 заказ билета для несольких человек --дописать
+        //7 заказ билета для 2 человек 
         [Test]
         [Category("SearchTest")]
         public void TicketForManyPeople()
@@ -103,13 +105,50 @@ namespace Lab7.Tests
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
                 .OpenCloseAdditionalCriterias(Driver)
+                .OpenListAdults()
+                .GetCount()
+                .OpenCloseAdditionalCriterias(Driver)
                 .Search();
+
+            Assert.IsNotNull(Driver.FindElements(By.XPath("//strong[contains(text(),'2')]")));
         }
 
         //7 Заказ билета с выбором времени отбытия
+        [Test]
+        [Category("SearchTest")]
+        public void SettingHoursOfDeparture()
+        {
+            mainPage = new MainPage(Driver)
+                .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
+                .OpenCloseAdditionalCriterias(Driver)
+                .GetHours()
+                .GetCount()
+                .Search();
 
-        //9 Использование кнопки нарвиться
+            Assert.IsNotNull(Driver.FindElements(By.XPath("//strong[contains(text(),'2')]")));
+        }
+
+        //9 Использование кнопки нравиться
+        [Test]
+        [Category("ButtonChecking")]
+        public void ShareButton()
+        {
+            mainPage = new MainPage(Driver)
+                .OpenSharelist()
+                .ClickFacebookBtn();
+
+            Assert.AreEqual("https://www.nationalrail.co.uk/", Driver.Url);
+        }
 
         //10 заказ из вкладки recent
+        [Test]
+        [Category("SearchTest")]
+        public void TakeJourneyFromRecent()
+        {
+            mainPage = new MainPage(Driver)
+                .GetRecentTrain();
+
+            Assert.AreEqual("https://www.nationalrail.co.uk/", Driver.Url);
+        }
     }
 }

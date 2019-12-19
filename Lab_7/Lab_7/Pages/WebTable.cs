@@ -12,29 +12,37 @@ using OpenQA.Selenium.Support.UI;
 
 namespace Lab_7.Pages
 {
-    //public class WebTable
-    //{
-    //    private IWebElement _webTable;
+    public class WebTable
+    {
+        private IWebElement _webTable;
 
-    //    public WebTable(IWebElement webTable)
-    //    {
-    //        set_webTable(webTable);
-    //    }
+        public WebTable(IWebElement webTable)
+        {
+            set_webTable(webTable);
+        }
 
-    //    public IWebElement get_webTable()
-    //    {
-    //        return _webTable;
-    //    }
+        public IWebElement get_webTable()
+        {
+            return _webTable;
+        }
 
-    //    public void set_webTable(IWebElement _webTable)
-    //    {
-    //        this._webTable = _webTable;
-    //    }
+        public void set_webTable(IWebElement _webTable)
+        {
+            this._webTable = _webTable;
+        }
 
-    //    public int getRowCount(string tagname)
-    //    {
-    //        //List<IWebElement> tableRows = _webTable.FindElements(By.TagName(tagname));
-    //        return tableRows.Count();
-    //    }
-    //}
+
+        public IReadOnlyList<IWebElement> getelementsTableFromElemntById (string id)
+        {
+            IReadOnlyList<IWebElement> tableRows = _webTable.FindElements(By.Id(id));
+            return tableRows;
+        }
+
+        public IWebElement getElement(string value, IReadOnlyList<IWebElement> webElements)
+        {
+            //IWebElement element = webElements //webElements.Any(w => w.FindElement(By.XPath($"//option[contains(@value,{value})]")));
+            //    int t = webElements.
+            //return element;
+        }
+    }
 }

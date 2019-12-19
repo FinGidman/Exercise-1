@@ -28,12 +28,21 @@ namespace Lab7.Pages
         [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Station & Train info')]")]
         private IWebElement StationAndtrainInfoPagelink { get; set; }
 
+        [FindsBy(How = How.ClassName, Using = "clear op-recent-journey-link op-060-tracked")]
+        private IWebElement RecentJourneys { get; set; }
+
         //видимые поля
         [FindsBy(How = How.Id, Using = "txtFrom")] //станция отбытия
         private IWebElement DepartureStation { get; set; }
 
         [FindsBy(How = How.Id, Using = "txtTo")] //станция прибытия
         private IWebElement ArrivalStation { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Share ')]")]
+        private IWebElement ShareCMlist { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Facebook')]")]
+        private IWebElement FacebookBtn { get; set; }
 
         //дополнительные критерии
         [FindsBy(How = How.Id, Using = "opPasgrRlcrd")] //список доп. критерий отбора
@@ -48,7 +57,11 @@ namespace Lab7.Pages
         [FindsBy(How = How.Id, Using ="adults")] //взрослые
         private IWebElement Adults { get; set; }
 
-        [FindsBy(How = How.XPath, Using ="")] //доделать
+        [FindsBy(How = How.XPath, Using = "//option[contains(text(),'2')]")] //взрослые
+        private IWebElement adultsCount { get; set; }
+
+        [FindsBy(How = How.Id, Using = "sltHours")] //время
+        private IWebElement Hours { get; set; }
 
         //подтверждение поиска
         [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Go')]")] //подтвержжение поиска
@@ -107,6 +120,42 @@ namespace Lab7.Pages
         public MainPage SwitchReturn()
         {
             returnCheckbox.Click();
+            return this;
+        }
+
+        public MainPage OpenListAdults()
+        {
+            Adults.Click();
+            return this;
+        }
+
+        public MainPage GetCount()
+        {
+            adultsCount.Click();
+            return this;
+        }
+
+        public MainPage GetRecentTrain()
+        {
+            RecentJourneys.Click();
+            return this;
+        }
+
+        public MainPage GetHours()
+        {
+            Hours.Click();
+            return this;
+        }
+
+        public MainPage OpenSharelist()
+        {
+            ShareCMlist.Click();
+            return this;
+        }
+
+        public MainPage ClickFacebookBtn()
+        {
+            FacebookBtn.Click();
             return this;
         }
     }
