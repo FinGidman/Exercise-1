@@ -32,10 +32,5 @@ namespace Lab7.Pages
             wait.Until(condition: ExpectedConditions.ElementToBeClickable(By.Id(id)));
             return this;
         }
-            //wait = new WebDriverWait(driver, TimeSpan.FromSeconds(time));
-            //wait.Until(condition: ExpectedConditions.ElementToBeClickable(By.XPath(xpath)));
-            ////"//a[contains(@title,'Accept All Cookies')]"
-            
-        
     }
 }

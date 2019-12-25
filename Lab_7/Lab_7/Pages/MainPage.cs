@@ -14,13 +14,6 @@ namespace Lab7.Pages
 {
     class MainPage : WorkWithTime
     {
-        //public override WorkWithTime WaitElementXPath(IWebDriver driver, int time, string xpath)
-        //{
-        //    wait = new WebDriverWait(driver, TimeSpan.FromSeconds(time));
-        //    wait.Until(condition: ExpectedConditions.ElementToBeClickable(By.XPath(xpath)));
-        //    return this;
-        //}
-
         IWebDriver driver;
 
         [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Station & Train info')]")]
