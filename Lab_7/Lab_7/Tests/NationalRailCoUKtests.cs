@@ -10,6 +10,8 @@ using Lab7.Services;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
+using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 
 namespace Lab7.Tests
 {
@@ -17,123 +19,154 @@ namespace Lab7.Tests
     {
         //1 поиск билета по городам
         MainPage mainPage;
+        WebTable webTable;
+
         [Test]
+        [Description("Find tickets without additional properties")]
         [Category("SearchTest")]
-        public void BuyingTicketWithoutSpecifyingInforamtionAboutArriveAndDepartue()
+        public void TicketsWithoutAdditionalProperties()
         {
             mainPage = new MainPage(Driver)
-                .AcceptCookies(Driver)
+                .AcceptCookies()
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
+                .SetDateDeparture()
                 .Search();
 
-            Assert.IsNotNull(Driver.FindElement(By.XPath("//a[contains(text(),'Anytime')]")));
+            webTable = new WebTable();
+            Assert.IsTrue(webTable.CheckElementsFromDepartureAndArrival("//span[contains(@class,'opFromSection')]",
+                TestDataReader.GetData("ManchesterPIC"),
+                TestDataReader.GetData("LondonBFR")));
         }
 
-        //2 поиск билета первого класса
+        //2 поиск билета первого класса 
         [Test]
+        [Description("First class tickets without additional properties")]
         [Category("SearchTest")]
         public void FirstCLassTickets()
         {
             mainPage = new MainPage(Driver)
-                .AcceptCookies(Driver)
+                .AcceptCookies()
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
-                .OpenCloseAdditionalCriterias(Driver)
+                .OpenCloseAdditionalCriterias()
                 .SwitchStandardClass()
-                .OpenCloseAdditionalCriterias(Driver)
+                .OpenCloseAdditionalCriterias()
                 .Search();
 
-            Assert.IsNotNull(Driver.FindElement(By.XPath("//a[contains(text(),'First Class Anytime')]")));
+            webTable = new WebTable();
+            Assert.IsTrue(webTable.CheckTravelClass("//a[contains(@class,'op-listened')]", "First class"));
         }
 
         //3 другие станции
         [Test]
+        [Category("Find tickets to another stations without additional properties")]
         [Category("SearchTest")]
-        public void OrderTicketsByStationName()
+        public void TicketsToAnotherStation()
         {
             mainPage = new MainPage(Driver)
-                .AcceptCookies(Driver)
+                .AcceptCookies()
                 .InputStationsAndSeacrh(RouteCreator.ArrivalBystationName())
                 .Search();
 
-            Assert.IsNotNull(Driver.FindElement(By.XPath("//a[contains(text(),'Anytime')]")));
+            webTable = new WebTable();
+            Assert.IsTrue(webTable.CheckElementsFromDepartureAndArrival("//span[contains(@class,'opFromSection')]",
+                TestDataReader.GetData("ManchesterPIC"),
+                TestDataReader.GetData("BirminghamMS")));
         }
 
         //4 поиск по почтовому коду
         [Test]
+        [Description("Find tickets by postcode without additional properties")]
         [Category("SearchTest")]
-        public void OrderTicketsByPostCode()
+        public void TicketsByPostCode()
         {
             mainPage = new MainPage(Driver)
-                .AcceptCookies(Driver)
+                .AcceptCookies()
                 .InputStationsAndSeacrh(RouteCreator.ArrivalByPostcode())
                 .Search();
 
-            Assert.IsNotNull(Driver.FindElement(By.XPath("//a[contains(text(),'Anytime')]")));
+            webTable = new WebTable();
+            Assert.IsTrue(webTable.CheckElementsFromDepartureAndArrival("//span[contains(@class,'opFromSection')]",
+                TestDataReader.GetData("ManchesterPIC"),
+                "Manchester Piccadilly"));
         }
 
         //5 Заказ билета с обратным путем
         [Test]
+        [Description("Find two way tickets")]
         [Category("SearchTest")]
-        public void OrderTicketsWithReturning()
+        public void TwoWayTickets()
         {
             mainPage = new MainPage(Driver)
+                .AcceptCookies()
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
                 .SwitchReturn()
                 .Search();
 
-            Assert.IsNotNull(Driver.FindElement(By.XPath("//a[contains(text(),'Anytime')]")));
+            webTable = new WebTable();
+            Assert.IsTrue(webTable.CheckElementsFromDepartureAndArrival("//span[contains(@class,'opFromSection')]",
+                            TestDataReader.GetData("ManchesterPIC"),
+                            TestDataReader.GetData("LondonBFR")));
         }
 
-        //6 Получение инф о станции
+        //6 Получение инф о станции 
+        //Решить ошибку
         [Test]
+        [Category("Get information about station")]
         [Category("Info")]
         public void GetInfoAboutStation()
         {
             StationAndTrainInfoPage stationAndTrainInfoPage = new MainPage(Driver)
-                .AcceptCookies(Driver)
+                .AcceptCookies()
                 .GoToStationAndTrainInfoPage()
                 .InputStationAndSearch(RouteCreator.InputStationName());
 
             Assert.IsNotNull(Driver.FindElement(By.XPath("//abbr[contains(text(),'PAD')]")));
         }
 
-        //7 заказ билета для 2 человек 
+        //7 заказ билета для 2 взрослых человек NOT DONE
         [Test]
+        [Description("Tickets for few adult people")]
         [Category("SearchTest")]
-        public void TicketForManyPeople()
+        public void TicketForFewAdultPeople()
         {
             mainPage = new MainPage(Driver)
+                .AcceptCookies()
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
-                .OpenCloseAdditionalCriterias(Driver)
-                .OpenListAdults()
-                .GetCount()
-                .OpenCloseAdditionalCriterias(Driver)
+                .OpenCloseAdditionalCriterias()
+                .OpenListAdultsAndSelect("2")
+                .OpenCloseAdditionalCriterias()
                 .Search();
 
             Assert.IsNotNull(Driver.FindElements(By.XPath("//strong[contains(text(),'2')]")));
         }
 
-        //7 Заказ билета с выбором времени отбытия
+        //8 Заказ билета с выбором времени отбытия NOT DONE
+        //SELECT=DONE ASSERT
         [Test]
+        [Description("Tickets with time departuew")]
         [Category("SearchTest")]
-        public void SettingHoursOfDeparture()
+        public void TicketsByChoosingDepartureTime()
         {
             mainPage = new MainPage(Driver)
+                .AcceptCookies()
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
-                .OpenCloseAdditionalCriterias(Driver)
-                .GetHours()
-                .GetCount()
+                .OpenCloseAdditionalCriterias()
+                .SetHours("12")
                 .Search();
 
-            Assert.IsNotNull(Driver.FindElements(By.XPath("//strong[contains(text(),'2')]")));
+            webTable = new WebTable();
+            Assert.IsTrue(webTable.CheckHours("//*[contains(@class,'opTDStackOne')]//div[contains(@class,'opDepartTime')]","12"));
         }
 
         //9 Использование кнопки нравиться
+        //DONE
         [Test]
+        [Description("Using share button")]
         [Category("ButtonChecking")]
         public void ShareButton()
         {
             mainPage = new MainPage(Driver)
+                .AcceptCookies()
                 .OpenSharelist()
                 .ClickFacebookBtn();
 
@@ -141,11 +174,14 @@ namespace Lab7.Tests
         }
 
         //10 заказ из вкладки recent
+        //DONE
         [Test]
+        [Description("call recent journeys")]
         [Category("SearchTest")]
         public void TakeJourneyFromRecent()
         {
             mainPage = new MainPage(Driver)
+                .AcceptCookies()
                 .GetRecentTrain();
 
             Assert.AreEqual("https://www.nationalrail.co.uk/", Driver.Url);

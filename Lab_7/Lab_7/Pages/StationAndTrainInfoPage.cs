@@ -12,7 +12,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace Lab7.Pages
 {
-    class StationAndTrainInfoPage
+    class StationAndTrainInfoPage : WorkWithTime
     {
         IWebDriver driver;
 
@@ -31,6 +31,7 @@ namespace Lab7.Pages
         public StationAndTrainInfoPage InputStationAndSearch(Station station)
         {
             EnterStation.SendKeys(station.StationName);
+            WaitElementXPath(10, "//span[contains(text(),'Search')]");
             searchButton.Click();
             return this;
         }

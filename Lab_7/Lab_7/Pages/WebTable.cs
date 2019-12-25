@@ -6,43 +6,66 @@ using System.Threading.Tasks;
 using Lab7.Models;
 using Lab7.Pages;
 using Lab7.Services;
+using Lab7.Driver;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 
-namespace Lab_7.Pages
+namespace Lab7.Pages
 {
     public class WebTable
     {
-        private IWebElement _webTable;
-
-        public WebTable(IWebElement webTable)
+        public IReadOnlyCollection<IWebElement> getElementsByXpath(string xpath)
         {
-            set_webTable(webTable);
+            IReadOnlyCollection<IWebElement> webElements = DriverSingleton.GetDriver().FindElements(By.XPath(xpath));
+            return webElements;
         }
 
-        public IWebElement get_webTable()
+        public bool CheckElementsFromDepartureAndArrival(string xpath, string arival, string departure)
         {
-            return _webTable;
+            IReadOnlyCollection<IWebElement> collection = getElementsByXpath(xpath);
+
+            foreach(IWebElement w in collection)
+            {
+                if(w.GetAttribute("InnerText") != departure || w.GetAttribute("InnerText") != arival)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
-        public void set_webTable(IWebElement _webTable)
+
+        public bool CheckTravelClass(string xpath, string type)
         {
-            this._webTable = _webTable;
+            IReadOnlyCollection<IWebElement> collection = getElementsByXpath(xpath);
+
+            foreach (IWebElement w in collection)
+            {
+                if (w.GetAttribute("InnerText") != type)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
-
-        public IReadOnlyList<IWebElement> getelementsTableFromElemntById (string id)
+        public bool CheckHours(string xpath, string time)
         {
-            IReadOnlyList<IWebElement> tableRows = _webTable.FindElements(By.Id(id));
-            return tableRows;
-        }
+            IReadOnlyCollection<IWebElement> collection = getElementsByXpath(xpath);
 
-        public IWebElement getElement(string value, IReadOnlyList<IWebElement> webElements)
-        {
-            //IWebElement element = webElements //webElements.Any(w => w.FindElement(By.XPath($"//option[contains(@value,{value})]")));
-            //    int t = webElements.
-            //return element;
+            int count = 0;
+            foreach(IWebElement w in collection)
+            {
+                if(w.GetAttribute("InnerText").Contains(time))
+                {
+                    count++;
+                }
+            }
+            if (count > 0)
+                return true;
+            else
+                return false;
         }
     }
 }

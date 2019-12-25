@@ -9,6 +9,8 @@ namespace Lab7.Models
         public string DepartureCity { get; set; }
         public string ArrivalCity { get; set; }
 
+  
+
         public Route(string departureCity, string arrivalCity)
         {
             DepartureCity = departureCity;

@@ -36,7 +36,7 @@ namespace Lab7.Tests
                 screen.SaveAsFile(screenFolder + @"\screen" + DateTime.Now.ToString("yy-MM-dd_hh-mm-ss") + ".png",
                     ScreenshotImageFormat.Png);
             }
-            //DriverSingleton.CloseDriver();
+            DriverSingleton.CloseDriver();
         }
     }
 }
