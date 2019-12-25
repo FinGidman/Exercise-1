@@ -6,6 +6,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using Lab5_WebDriver.Actions;
 using System.Threading;
 using OpenQA.Selenium.Support.UI;
+using Lab5_WebDriver.Table;
 
 namespace Lab5_WebDriver
 {
@@ -15,6 +16,7 @@ namespace Lab5_WebDriver
         IWebDriver Browser;
         WebDriverWait wait;
         AdditionalCriterias additionalCriterias;
+        WebTable webTable;
 
         [TestInitialize]
         public void Setup()
@@ -32,7 +34,10 @@ namespace Lab5_WebDriver
             FromToStations fromToStations = new FromToStations(Browser).InputStations("Manchester", "London Blackfriars");
             ConfirmSelectionCriteria confirmSelectionCriteria = new ConfirmSelectionCriteria(Browser).ClickSearchButton();
 
-            Assert.IsNotNull(Browser.FindElement(By.XPath("//a[contains(text(),'Anytime')]")));
+            webTable = new WebTable();
+            Assert.IsTrue(webTable.CheckElementsFromDepartureAndArrival("//span[contains(@class,'opFromSection')]",
+                "Manchester Piccadilly",
+                "London Blackfriars"));
         }
 
         [TestMethod]
@@ -51,7 +56,8 @@ namespace Lab5_WebDriver
             wait.Until(condition: ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(),'Go')]")));
             ConfirmSelectionCriteria confirmSelectionCriteria = new ConfirmSelectionCriteria(Browser).ClickSearchButton();
 
-            Assert.IsNotNull(Browser.FindElement(By.XPath("//a[contains(text(),'First Class Anytime')]")));
+            webTable = new WebTable();
+            Assert.IsTrue(webTable.CheckTravelClass("//a[contains(@class,'op-listened')]", "First class"));
         }
 
         [TestCleanup]
@@ -61,3 +67,4 @@ namespace Lab5_WebDriver
         }
     }
 }
+
