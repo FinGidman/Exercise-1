@@ -12,22 +12,22 @@ namespace Lab7.Services
     {
         public static Route WithAllProperties()
         {
-            return new Route(TestDataReader.GetData("ManchesterPIC"), TestDataReader.GetData("LondonBFR"));
+            return new Route(TestDataReader.GetData("ManchesterPIC").Value, TestDataReader.GetData("LondonBFR").Value);
         }
 
         public static Route ArrivalBystationName()
         {
-            return new Route(TestDataReader.GetData("ManchetserPIC"), TestDataReader.GetData("BirminghamMS"));
+            return new Route(TestDataReader.GetData("ManchetserPIC").Value, TestDataReader.GetData("BirminghamMS").Value);
         }
 
         public static Route ArrivalByPostcode()
         {
-            return new Route(TestDataReader.GetData("LondonALL"), TestDataReader.GetData("ManchesterPostCode"));
+            return new Route(TestDataReader.GetData("LondonALL").Value, TestDataReader.GetData("ManchesterPostCode").Value);
         }
 
         public static Station InputStationName()
         {
-            return new Station(TestDataReader.GetData("LondonPAD"));
+            return new Station(TestDataReader.GetData("LondonPAD").Value);
         }
     }
 }
