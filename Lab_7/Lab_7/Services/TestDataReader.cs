@@ -26,9 +26,9 @@ namespace Lab7.Services
             }
         }
 
-        public static string GetData(string key)
+        public static KeyValueConfigurationElement GetData(string key)
         {
-            return ConfigFile.AppSettings.Settings[key]?.Value;
+            return ConfigFile.AppSettings.Settings[key];
         }
     }
 }

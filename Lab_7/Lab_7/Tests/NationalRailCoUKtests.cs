@@ -34,8 +34,8 @@ namespace Lab7.Tests
 
             webTable = new WebTable();
             Assert.IsTrue(webTable.CheckElementsFromDepartureAndArrival("//span[contains(@class,'opFromSection')]",
-                TestDataReader.GetData("ManchesterPIC"),
-                TestDataReader.GetData("LondonBFR")));
+                TestDataReader.GetData("ManchesterPIC").Value,
+                TestDataReader.GetData("LondonBFR").Value));
         }
 
         //2 поиск билета первого класса 
@@ -69,8 +69,8 @@ namespace Lab7.Tests
 
             webTable = new WebTable();
             Assert.IsTrue(webTable.CheckElementsFromDepartureAndArrival("//span[contains(@class,'opFromSection')]",
-                TestDataReader.GetData("ManchesterPIC"),
-                TestDataReader.GetData("BirminghamMS")));
+                TestDataReader.GetData("ManchesterPIC").Value,
+                TestDataReader.GetData("BirminghamMS").Value));
         }
 
         //4 поиск по почтовому коду
@@ -86,7 +86,7 @@ namespace Lab7.Tests
 
             webTable = new WebTable();
             Assert.IsTrue(webTable.CheckElementsFromDepartureAndArrival("//span[contains(@class,'opFromSection')]",
-                TestDataReader.GetData("ManchesterPIC"),
+                TestDataReader.GetData("ManchesterPIC").Value,
                 "Manchester Piccadilly"));
         }
 
@@ -104,8 +104,8 @@ namespace Lab7.Tests
 
             webTable = new WebTable();
             Assert.IsTrue(webTable.CheckElementsFromDepartureAndArrival("//span[contains(@class,'opFromSection')]",
-                            TestDataReader.GetData("ManchesterPIC"),
-                            TestDataReader.GetData("LondonBFR")));
+                            TestDataReader.GetData("ManchesterPIC").Value,
+                            TestDataReader.GetData("LondonBFR").Value));
         }
 
         //6 Получение инф о станции 
