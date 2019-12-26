@@ -61,6 +61,7 @@
     <Compile Include="Actions\FromToStations.cs" />
     <Compile Include="NationalRailcoukTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Table\WebTable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
