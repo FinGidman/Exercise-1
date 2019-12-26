@@ -17,7 +17,7 @@ namespace Lab7.Tests
 {
     class NationalRailCoUKtests : TestConfig
     {
-        //1 поиск билета по городам
+
         MainPage mainPage;
         WebTable webTable;
 
@@ -38,7 +38,6 @@ namespace Lab7.Tests
                 TestDataReader.GetData("LondonBFR").Value));
         }
 
-        //2 поиск билета первого класса 
         [Test]
         [Description("First class tickets without additional properties")]
         [Category("SearchTest")]
@@ -56,7 +55,6 @@ namespace Lab7.Tests
             Assert.IsTrue(webTable.CheckTravelClass("//a[contains(@class,'op-listened')]", "First class"));
         }
 
-        //3 другие станции
         [Test]
         [Category("Find tickets to another stations without additional properties")]
         [Category("SearchTest")]
@@ -73,7 +71,6 @@ namespace Lab7.Tests
                 TestDataReader.GetData("BirminghamMS").Value));
         }
 
-        //4 поиск по почтовому коду
         [Test]
         [Description("Find tickets by postcode without additional properties")]
         [Category("SearchTest")]
@@ -108,8 +105,6 @@ namespace Lab7.Tests
                             TestDataReader.GetData("LondonBFR").Value));
         }
 
-        //6 Получение инф о станции 
-        //Решить ошибку
         [Test]
         [Category("Get information about station")]
         [Category("Info")]
@@ -123,7 +118,6 @@ namespace Lab7.Tests
             Assert.IsNotNull(Driver.FindElement(By.XPath("//abbr[contains(text(),'PAD')]")));
         }
 
-        //7 заказ билета для 2 взрослых человек NOT DONE
         [Test]
         [Description("Tickets for few adult people")]
         [Category("SearchTest")]
@@ -140,8 +134,6 @@ namespace Lab7.Tests
             Assert.IsNotNull(Driver.FindElements(By.XPath("//strong[contains(text(),'2')]")));
         }
 
-        //8 Заказ билета с выбором времени отбытия NOT DONE
-        //SELECT=DONE ASSERT
         [Test]
         [Description("Tickets with time departuew")]
         [Category("SearchTest")]
@@ -158,8 +150,6 @@ namespace Lab7.Tests
             Assert.IsTrue(webTable.CheckHours("//*[contains(@class,'opTDStackOne')]//div[contains(@class,'opDepartTime')]","12"));
         }
 
-        //9 Использование кнопки нравиться
-        //DONE
         [Test]
         [Description("Using share button")]
         [Category("ButtonChecking")]
@@ -173,8 +163,6 @@ namespace Lab7.Tests
             Assert.AreEqual("https://www.nationalrail.co.uk/", Driver.Url);
         }
 
-        //10 заказ из вкладки recent
-        //DONE
         [Test]
         [Description("call recent journeys")]
         [Category("SearchTest")]
