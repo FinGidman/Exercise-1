@@ -26,8 +26,7 @@ namespace Lab7.Tests
         [Category("SearchTest")]
         public void TicketsWithoutAdditionalProperties()
         {
-            mainPage = new MainPage(Driver)
-                .AcceptCookies()
+            mainPage = new MainPage(Driver)               
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
                 .SetDateDeparture()
                 .Search();
@@ -44,7 +43,6 @@ namespace Lab7.Tests
         public void FirstCLassTickets()
         {
             mainPage = new MainPage(Driver)
-                .AcceptCookies()
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
                 .OpenCloseAdditionalCriterias()
                 .SwitchStandardClass()
@@ -61,7 +59,6 @@ namespace Lab7.Tests
         public void TicketsToAnotherStation()
         {
             mainPage = new MainPage(Driver)
-                .AcceptCookies()
                 .InputStationsAndSeacrh(RouteCreator.ArrivalBystationName())
                 .Search();
 
@@ -77,7 +74,6 @@ namespace Lab7.Tests
         public void TicketsByPostCode()
         {
             mainPage = new MainPage(Driver)
-                .AcceptCookies()
                 .InputStationsAndSeacrh(RouteCreator.ArrivalByPostcode())
                 .Search();
 
@@ -94,7 +90,6 @@ namespace Lab7.Tests
         public void TwoWayTickets()
         {
             mainPage = new MainPage(Driver)
-                .AcceptCookies()
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
                 .SwitchReturn()
                 .Search();
@@ -111,7 +106,6 @@ namespace Lab7.Tests
         public void GetInfoAboutStation()
         {
             StationAndTrainInfoPage stationAndTrainInfoPage = new MainPage(Driver)
-                .AcceptCookies()
                 .GoToStationAndTrainInfoPage()
                 .InputStationAndSearch(RouteCreator.InputStationName());
 
@@ -124,7 +118,6 @@ namespace Lab7.Tests
         public void TicketForFewAdultPeople()
         {
             mainPage = new MainPage(Driver)
-                .AcceptCookies()
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
                 .OpenCloseAdditionalCriterias()
                 .OpenListAdultsAndSelect("2")
@@ -140,7 +133,6 @@ namespace Lab7.Tests
         public void TicketsByChoosingDepartureTime()
         {
             mainPage = new MainPage(Driver)
-                .AcceptCookies()
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
                 .OpenCloseAdditionalCriterias()
                 .SetHours("12")
@@ -156,7 +148,6 @@ namespace Lab7.Tests
         public void ShareButton()
         {
             mainPage = new MainPage(Driver)
-                .AcceptCookies()
                 .OpenSharelist()
                 .ClickFacebookBtn();
 
@@ -169,7 +160,6 @@ namespace Lab7.Tests
         public void TakeJourneyFromRecent()
         {
             mainPage = new MainPage(Driver)
-                .AcceptCookies()
                 .GetRecentTrain();
 
             Assert.AreEqual("https://www.nationalrail.co.uk/", Driver.Url);

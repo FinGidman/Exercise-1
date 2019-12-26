@@ -9,6 +9,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
 using NUnit.Framework.Interfaces;
+using Lab7.Pages;
 
 namespace Lab7.Tests
 {
@@ -22,6 +23,7 @@ namespace Lab7.Tests
             Driver = DriverSingleton.GetDriver();
             Driver.Navigate().GoToUrl("https://www.nationalrail.co.uk/");
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            MainPage mainPage = new MainPage(Driver).AcceptCookies();
         }
 
 
