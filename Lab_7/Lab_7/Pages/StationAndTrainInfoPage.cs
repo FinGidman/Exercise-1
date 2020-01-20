@@ -19,7 +19,7 @@ namespace Lab7.Pages
         [FindsBy(How = How.Id, Using = "station")]
         private IWebElement EnterStation { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Search')]")]
+        [FindsBy(How = How.XPath, Using = "//button[contains(@title,'Find stations')]")]
         private IWebElement searchButton { get; set; }
 
         public StationAndTrainInfoPage(IWebDriver driver)
@@ -31,7 +31,7 @@ namespace Lab7.Pages
         public StationAndTrainInfoPage InputStationAndSearch(Station station)
         {
             EnterStation.SendKeys(station.StationName);
-            WaitElementXPath(10, "//span[contains(text(),'Search')]");
+            WaitElementXPath(10, "//button[contains(@title,'Find stations')]");
             searchButton.Click();
             return this;
         }

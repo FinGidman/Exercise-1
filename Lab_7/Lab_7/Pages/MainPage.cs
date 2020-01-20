@@ -16,10 +16,13 @@ namespace Lab7.Pages
     {
         IWebDriver driver;
 
+        [FindsBy(How = How.XPath, Using = "//a[contains(text(),'sign in')]")]
+        private IWebElement SignInLink { get; set; }
+
         [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Station & Train info')]")]
         private IWebElement StationAndtrainInfoPagelink { get; set; }
 
-        [FindsBy(How = How.ClassName, Using = "clear op-recent-journey-link op-060-tracked")]
+        [FindsBy(How = How.XPath, Using = "//a[contains(@data-oprow,'1')]")]
         private IWebElement RecentJourneys { get; set; }
 
         //видимые поля
@@ -32,7 +35,7 @@ namespace Lab7.Pages
         [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Share ')]")]
         private IWebElement ShareCMlist { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Facebook')]")]
+        [FindsBy(How = How.XPath, Using = "//a[contains(@title,'Share on Facebook (opens in a new window)')]")]
         private IWebElement FacebookBtn { get; set; }
 
         //дополнительные критерии
@@ -62,10 +65,19 @@ namespace Lab7.Pages
         [FindsBy(How = How.Id, Using = "txtDate")] //время
         private IWebElement DateDeparture { get; set; }
 
+        [FindsBy(How = How.XPath, Using ="//span[contains(text(),'Home')]")]
+        private IWebElement Home { get; set; }
+
         public MainPage(IWebDriver driver)
         {
             PageFactory.InitElements(driver, this);
             this.driver = driver;
+        }
+
+        public MainPage SignIn()
+        {
+            SignInLink.Click();
+            return this;
         }
 
         //инфо о станции надо перейти на стр
@@ -84,6 +96,7 @@ namespace Lab7.Pages
 
         public MainPage Search()
         {
+            WaitElementXPath(60, "//span[contains(text(),'Go')]");
             searchButton.Click();
             return this;
         }
@@ -91,8 +104,9 @@ namespace Lab7.Pages
         public MainPage AcceptCookies()
         {
             //WaitElementXPath(driver, 60, "//a[contains(@title,'Accept All Cookies')]");
-            
-            WaitElementXPath(60, "//a[contains(@title,'Accept All Cookies')]");
+
+            //WaitElementXPath(60, "//a[contains(@title,'Accept All Cookies')]");
+            WaitElementByXpathCookies(60, "//a[contains(@title,'Accept All Cookies')]");
             AcceptCookiesButton.Click();
             return this;
         }
@@ -135,7 +149,7 @@ namespace Lab7.Pages
         {
             Hours.Click();
             var elements = new SelectElement(Hours);
-            elements.SelectByValue("time");
+            elements.SelectByValue(time);
             return this;
         }
 
@@ -147,7 +161,9 @@ namespace Lab7.Pages
 
         public MainPage ClickFacebookBtn()
         {
+            WaitElementXPath(10, "//a[contains(@title,'Share on Facebook (opens in a new window)')]");
             FacebookBtn.Click();
+            //FacebookBtn.Click();
             return this;
         }
 
@@ -155,6 +171,12 @@ namespace Lab7.Pages
         {
             DateDeparture.Clear();
             DateDeparture.SendKeys("27/12/2019");
+            return this;
+        }
+
+        public MainPage BackToHome()
+        {
+            Home.Click();
             return this;
         }
     }

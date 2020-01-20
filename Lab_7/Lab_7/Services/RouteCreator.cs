@@ -22,7 +22,7 @@ namespace Lab7.Services
 
         public static Route ArrivalByPostcode()
         {
-            return new Route(TestDataReader.GetData("LondonALL").Value, TestDataReader.GetData("ManchesterPostCode").Value);
+            return new Route(TestDataReader.GetData("LondonBFR").Value, TestDataReader.GetData("ManchesterPostCode").Value);
         }
 
         public static Station InputStationName()

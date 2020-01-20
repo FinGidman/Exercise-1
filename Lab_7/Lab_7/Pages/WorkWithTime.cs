@@ -32,5 +32,12 @@ namespace Lab7.Pages
             wait.Until(condition: ExpectedConditions.ElementToBeClickable(By.Id(id)));
             return this;
         }
+
+        public WorkWithTime WaitElementByXpathCookies(int time, string xpath)
+        {
+            wait = new WebDriverWait(DriverSingleton.GetDriver(), TimeSpan.FromSeconds(time));
+            wait.Until(condition: ExpectedConditions.ElementToBeClickable(By.XPath(xpath)));
+            return this;
+        }
     }
 }

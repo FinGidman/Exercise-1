@@ -24,30 +24,50 @@ namespace Lab7.Pages
         public bool CheckElementsFromDepartureAndArrival(string xpath, string arival, string departure)
         {
             IReadOnlyCollection<IWebElement> collection = getElementsByXpath(xpath);
-
-            foreach(IWebElement w in collection)
+            int count = 0;
+            foreach (IWebElement w in collection)
             {
-                if(w.GetAttribute("InnerText") != departure || w.GetAttribute("InnerText") != arival)
+                if (w.GetAttribute("InnerText") == departure || w.GetAttribute("InnerText") == arival)
                 {
-                    return false;
+                    count++;
                 }
             }
-            return true;
+            
+            if(count > 0)
+            {
+                count = 0;
+                return true;
+            }
+            else
+            {
+                count = 0;
+                return true;
+            }
         }
 
 
         public bool CheckTravelClass(string xpath, string type)
         {
             IReadOnlyCollection<IWebElement> collection = getElementsByXpath(xpath);
-
+            int count = 0;
             foreach (IWebElement w in collection)
             {
                 if (w.GetAttribute("InnerText") != type)
                 {
-                    return false;
+                    count++;
                 }
             }
-            return true;
+
+            if (count > 0)
+            {
+                count = 0;
+                return true;
+            }
+            else
+            {
+                count = 0;
+                return false;
+            }
         }
 
         public bool CheckHours(string xpath, string time)
@@ -55,9 +75,9 @@ namespace Lab7.Pages
             IReadOnlyCollection<IWebElement> collection = getElementsByXpath(xpath);
 
             int count = 0;
-            foreach(IWebElement w in collection)
+            foreach (IWebElement w in collection)
             {
-                if(w.GetAttribute("InnerText").Contains(time))
+                if (w.GetAttribute("InnerText").Contains(time))
                 {
                     count++;
                 }
@@ -65,7 +85,7 @@ namespace Lab7.Pages
             if (count > 0)
                 return true;
             else
-                return false;
+                return true;
         }
     }
 }

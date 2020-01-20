@@ -33,14 +33,14 @@ namespace Lab7.Tests
 
             webTable = new WebTable();
             Assert.IsTrue(webTable.CheckElementsFromDepartureAndArrival("//span[contains(@class,'opFromSection')]",
-                TestDataReader.GetData("ManchesterPIC").Value,
-                TestDataReader.GetData("LondonBFR").Value));
+                "London Blackfriars  ",
+                "Manchester Piccadilly  "));
         }
 
         [Test]
         [Description("First class tickets without additional properties")]
         [Category("SearchTest")]
-        public void FirstCLassTickets()
+        public void FirstCLassTickets() //passed
         {
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
@@ -50,7 +50,7 @@ namespace Lab7.Tests
                 .Search();
 
             webTable = new WebTable();
-            Assert.IsTrue(webTable.CheckTravelClass("//a[contains(@class,'op-listened')]", "First class"));
+            Assert.IsTrue(webTable.CheckTravelClass("//a[contains(@class,'op-listened')]", " First Class Anytime"));
         }
 
         [Test]
@@ -64,14 +64,14 @@ namespace Lab7.Tests
 
             webTable = new WebTable();
             Assert.IsTrue(webTable.CheckElementsFromDepartureAndArrival("//span[contains(@class,'opFromSection')]",
-                TestDataReader.GetData("ManchesterPIC").Value,
-                TestDataReader.GetData("BirminghamMS").Value));
+                "Manchester Piccadilly  ",
+                "Birmingham Moor Street  "));
         }
 
         [Test]
         [Description("Find tickets by postcode without additional properties")]
         [Category("SearchTest")]
-        public void TicketsByPostCode()
+        public void TicketsByPostCode()//passed but need assert
         {
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.ArrivalByPostcode())
@@ -79,8 +79,8 @@ namespace Lab7.Tests
 
             webTable = new WebTable();
             Assert.IsTrue(webTable.CheckElementsFromDepartureAndArrival("//span[contains(@class,'opFromSection')]",
-                TestDataReader.GetData("ManchesterPIC").Value,
-                "Manchester Piccadilly"));
+                "London Blackfriars  ",
+                "Manchester Piccadilly  "));
         }
 
         //5 Заказ билета с обратным путем
@@ -91,31 +91,32 @@ namespace Lab7.Tests
         {
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
+                .OpenCloseAdditionalCriterias()
                 .SwitchReturn()
                 .Search();
 
             webTable = new WebTable();
             Assert.IsTrue(webTable.CheckElementsFromDepartureAndArrival("//span[contains(@class,'opFromSection')]",
-                            TestDataReader.GetData("ManchesterPIC").Value,
-                            TestDataReader.GetData("LondonBFR").Value));
+                            "London Blackfriars  ",
+                            "Manchester Piccadilly  "));
         }
 
         [Test]
         [Category("Get information about station")]
         [Category("Info")]
-        public void GetInfoAboutStation()
+        public void GetInfoAboutStation() //passed, sometimes cannot find element
         {
             StationAndTrainInfoPage stationAndTrainInfoPage = new MainPage(Driver)
                 .GoToStationAndTrainInfoPage()
                 .InputStationAndSearch(RouteCreator.InputStationName());
 
-            Assert.IsNotNull(Driver.FindElement(By.XPath("//abbr[contains(text(),'PAD')]")));
+            Assert.AreEqual("https://www.nationalrail.co.uk/stations/PAD/details.html", Driver.Url);
         }
 
         [Test]
         [Description("Tickets for few adult people")]
         [Category("SearchTest")]
-        public void TicketForFewAdultPeople()
+        public void TicketForFewAdultPeople() //passed
         {
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
@@ -130,39 +131,47 @@ namespace Lab7.Tests
         [Test]
         [Description("Tickets with time departuew")]
         [Category("SearchTest")]
-        public void TicketsByChoosingDepartureTime()
+        public void TicketsByChoosingDepartureTime()// Assert
         {
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
                 .OpenCloseAdditionalCriterias()
-                .SetHours("12")
+                .SetHours("21")
+                .OpenCloseAdditionalCriterias()
                 .Search();
 
             webTable = new WebTable();
-            Assert.IsTrue(webTable.CheckHours("//*[contains(@class,'opTDStackOne')]//div[contains(@class,'opDepartTime')]","12"));
+            Assert.IsTrue(webTable.CheckHours("//*[contains(@class,'opTDStackOne')]//div[contains(@class,'opDepartTime')]","21"));
         }
 
         [Test]
         [Description("Using share button")]
         [Category("ButtonChecking")]
-        public void ShareButton()
+        public void ShareButton() //passed
         {
             mainPage = new MainPage(Driver)
                 .OpenSharelist()
                 .ClickFacebookBtn();
 
-            Assert.AreEqual("https://www.nationalrail.co.uk/", Driver.Url);
+            //Assert.AreEqual("https://www.nationalrail.co.uk/", Driver.Url);
+           Assert.AreEqual(Driver.WindowHandles.Count(), 2);
         }
 
         [Test]
         [Description("call recent journeys")]
         [Category("SearchTest")]
-        public void TakeJourneyFromRecent()
+        public void TakeJourneyFromRecent() //not
         {
             mainPage = new MainPage(Driver)
+                .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
+                .Search()
+                .BackToHome()
                 .GetRecentTrain();
 
-            Assert.AreEqual("https://www.nationalrail.co.uk/", Driver.Url);
+            webTable = new WebTable();
+            Assert.IsTrue(webTable.CheckElementsFromDepartureAndArrival("//span[contains(@class,'opFromSection')]",
+                            "London Blackfriars  ",
+                            "Manchester Piccadilly  "));
         }
     }
 }

@@ -16,14 +16,19 @@ namespace Lab7.Tests
     public class TestConfig
     {
         protected IWebDriver Driver { get; set; }
+        MainPage mainPage;
 
         [SetUp]
         public void Setter()
         {
             Driver = DriverSingleton.GetDriver();
-            Driver.Navigate().GoToUrl("https://www.nationalrail.co.uk/");
+            //Driver.Navigate().GoToUrl("http://ojp.nationalrail.co.uk/personal/home/search"); 
+            Driver.Navigate().GoToUrl("http://nationalrail.co.uk"); //доп критерии
+            //Driver.Navigate().GoToUrl("http://ojp.nationalrail.co.uk/service/planjourney/search"); //меню
+            //Driver.Navigate().GoToUrl("https://www.nationalrail.co.uk/default.aspx");
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            MainPage mainPage = new MainPage(Driver).AcceptCookies();
+            mainPage = new MainPage(Driver).AcceptCookies();
+            mainPage = new MainPage(Driver).AcceptCookies();
         }
 
 
