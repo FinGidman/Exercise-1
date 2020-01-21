@@ -87,20 +87,5 @@ namespace Lab7.Pages
             else
                 return true;
         }
-
-        public bool CheckUrl(string expected, string current)
-        {
-            return true;
-        }
-
-        public bool CheckWindows(int expected, int current)
-        {
-            return true;
-        }
-
-        public bool FindElement(string xpath)
-        {
-            return true;
-        }
     }
 }
