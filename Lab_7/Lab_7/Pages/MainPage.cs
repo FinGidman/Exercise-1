@@ -119,13 +119,14 @@ namespace Lab7.Pages
 
         public MainPage SwitchStandardClass()
         {
+            WaitElementId(10, "standard-class");
             standardClassCheckbox.Click();
             return this;
         }
 
         public MainPage SwitchReturn()
         {
-            
+            WaitElementId(10, "ret-ch");
             returnCheckbox.Click();
             return this;
         }
@@ -140,6 +141,7 @@ namespace Lab7.Pages
 
         public MainPage GetRecentTrain()
         {
+            WaitElementXPath(10, "//a[contains(@data-oprow,'1')]");
             RecentJourneys.Click();
             return this;
         }
@@ -169,12 +171,13 @@ namespace Lab7.Pages
         public MainPage SetDateDeparture()
         {
             DateDeparture.Clear();
-            DateDeparture.SendKeys("27/12/2019");
+            DateDeparture.SendKeys("29/01/2020");
             return this;
         }
 
         public MainPage BackToHome()
         {
+            WaitElementXPath(10, "//span[contains(text(),'Home')]");
             Home.Click();
             return this;
         }
