@@ -114,7 +114,8 @@ namespace Lab7.Tests
                 .GoToStationAndTrainInfoPage()
                 .InputStationAndSearch(RouteCreator.InputStationName());
 
-            Assert.AreEqual("https://www.nationalrail.co.uk/stations/PAD/details.html", Driver.Url);
+            webTable = new WebTable();
+            Assert.IsTrue(webTable.CheckUrl("https://www.nationalrail.co.uk/stations/PAD/details.html", Driver.Url));
         }
 
         [Test]
@@ -130,7 +131,8 @@ namespace Lab7.Tests
                 .OpenCloseAdditionalCriterias()
                 .Search();
 
-            Assert.IsNotNull(Driver.FindElements(By.XPath("//strong[contains(text(),'2')]")));
+            webTable = new WebTable();
+            Assert.IsNotNull(webTable.FindElement("//strong[contains(text(),'2')]"));
         }
 
         [Test]
@@ -159,7 +161,8 @@ namespace Lab7.Tests
                 .OpenSharelist()
                 .ClickFacebookBtn();
 
-           Assert.AreEqual(Driver.WindowHandles.Count(), 2);
+            webTable = new WebTable();
+            Assert.IsTrue(webTable.CheckWindows(Driver.WindowHandles.Count(), 2));
         }
 
         [Test]
