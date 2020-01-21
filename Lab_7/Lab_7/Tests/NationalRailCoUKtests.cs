@@ -26,6 +26,7 @@ namespace Lab7.Tests
         [Category("SearchTest")]
         public void TicketsWithoutAdditionalProperties()
         {
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             mainPage = new MainPage(Driver)               
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
                 .SetDateDeparture()
@@ -42,6 +43,7 @@ namespace Lab7.Tests
         [Category("SearchTest")]
         public void FirstCLassTickets()
         {
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
                 .OpenCloseAdditionalCriterias()
@@ -73,6 +75,7 @@ namespace Lab7.Tests
         [Category("SearchTest")]
         public void TicketsByPostCode()
         {
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.ArrivalByPostcode())
                 .Search();
@@ -88,6 +91,7 @@ namespace Lab7.Tests
         [Category("SearchTest")]
         public void TwoWayTickets()
         {
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
                 .OpenCloseAdditionalCriterias()
@@ -105,6 +109,7 @@ namespace Lab7.Tests
         [Category("Info")]
         public void GetInfoAboutStation()
         {
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             StationAndTrainInfoPage stationAndTrainInfoPage = new MainPage(Driver)
                 .GoToStationAndTrainInfoPage()
                 .InputStationAndSearch(RouteCreator.InputStationName());
@@ -117,6 +122,7 @@ namespace Lab7.Tests
         [Category("SearchTest")]
         public void TicketForFewAdultPeople()
         {
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
                 .OpenCloseAdditionalCriterias()
@@ -132,6 +138,7 @@ namespace Lab7.Tests
         [Category("SearchTest")]
         public void TicketsByChoosingDepartureTime()
         {
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
                 .OpenCloseAdditionalCriterias()
@@ -147,6 +154,7 @@ namespace Lab7.Tests
         [Category("ButtonChecking")]
         public void ShareButton()
         {
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             mainPage = new MainPage(Driver)
                 .OpenSharelist()
                 .ClickFacebookBtn();
@@ -159,6 +167,7 @@ namespace Lab7.Tests
         [Category("SearchTest")]
         public void TakeJourneyFromRecent()
         {
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
                 .Search()
