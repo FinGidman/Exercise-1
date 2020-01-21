@@ -82,13 +82,16 @@ namespace Lab7.Pages
         //инфо о станции надо перейти на стр
         public StationAndTrainInfoPage GoToStationAndTrainInfoPage()
         {
+            WaitElementXPath(10, "//span[contains(text(),'Station & Train info')]");
             StationAndtrainInfoPagelink.Click();
             return new StationAndTrainInfoPage(driver);
         }
 
         public MainPage InputStationsAndSeacrh(Route route)
         {
+            WaitElementId(10, "txtFrom");
             DepartureStation.SendKeys(route.DepartureCity);
+            WaitElementId(10, "txtTo");
             ArrivalStation.SendKeys(route.ArrivalCity); 
             return this;
         }
@@ -151,6 +154,7 @@ namespace Lab7.Pages
 
         public MainPage OpenSharelist()
         {
+            WaitElementXPath(10, "//span[contains(text(),'Share ')]");
             ShareCMlist.Click();
             return this;
         }
@@ -159,7 +163,6 @@ namespace Lab7.Pages
         {
             WaitElementXPath(10, "//a[contains(@title,'Share on Facebook (opens in a new window)')]");
             FacebookBtn.Click();
-            //FacebookBtn.Click();
             return this;
         }
 
