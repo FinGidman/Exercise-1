@@ -54,8 +54,7 @@ namespace Lab7.Pages
         [FindsBy(How = How.Id, Using = "sltHours")] //время
         private IWebElement Hours { get; set; }
 
-        //подтверждение поиска
-        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Go')]")] //подтвержжение поиска
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Go')]")] //подтвержжение поиск
         private IWebElement searchButton { get; set; }
 
         //Cookies
@@ -103,9 +102,6 @@ namespace Lab7.Pages
 
         public MainPage AcceptCookies()
         {
-            //WaitElementXPath(driver, 60, "//a[contains(@title,'Accept All Cookies')]");
-
-            //WaitElementXPath(60, "//a[contains(@title,'Accept All Cookies')]");
             WaitElementByXpathCookies(60, "//a[contains(@title,'Accept All Cookies')]");
             AcceptCookiesButton.Click();
             return this;

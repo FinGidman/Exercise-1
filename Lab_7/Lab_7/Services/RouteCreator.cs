@@ -17,7 +17,7 @@ namespace Lab7.Services
 
         public static Route ArrivalBystationName()
         {
-            return new Route(TestDataReader.GetData("ManchetserPIC").Value, TestDataReader.GetData("BirminghamMS").Value);
+            return new Route(TestDataReader.GetData("ManchesterPIC").Value, TestDataReader.GetData("BirminghamMS").Value);
         }
 
         public static Route ArrivalByPostcode()

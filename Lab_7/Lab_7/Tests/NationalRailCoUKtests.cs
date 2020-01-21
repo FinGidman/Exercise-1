@@ -40,7 +40,7 @@ namespace Lab7.Tests
         [Test]
         [Description("First class tickets without additional properties")]
         [Category("SearchTest")]
-        public void FirstCLassTickets() //passed
+        public void FirstCLassTickets()
         {
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
@@ -71,7 +71,7 @@ namespace Lab7.Tests
         [Test]
         [Description("Find tickets by postcode without additional properties")]
         [Category("SearchTest")]
-        public void TicketsByPostCode()//passed but need assert
+        public void TicketsByPostCode()
         {
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.ArrivalByPostcode())
@@ -83,7 +83,6 @@ namespace Lab7.Tests
                 "Manchester Piccadilly  "));
         }
 
-        //5 Заказ билета с обратным путем
         [Test]
         [Description("Find two way tickets")]
         [Category("SearchTest")]
@@ -104,7 +103,7 @@ namespace Lab7.Tests
         [Test]
         [Category("Get information about station")]
         [Category("Info")]
-        public void GetInfoAboutStation() //passed, sometimes cannot find element
+        public void GetInfoAboutStation()
         {
             StationAndTrainInfoPage stationAndTrainInfoPage = new MainPage(Driver)
                 .GoToStationAndTrainInfoPage()
@@ -116,7 +115,7 @@ namespace Lab7.Tests
         [Test]
         [Description("Tickets for few adult people")]
         [Category("SearchTest")]
-        public void TicketForFewAdultPeople() //passed
+        public void TicketForFewAdultPeople()
         {
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
@@ -131,36 +130,34 @@ namespace Lab7.Tests
         [Test]
         [Description("Tickets with time departuew")]
         [Category("SearchTest")]
-        public void TicketsByChoosingDepartureTime()// Assert
+        public void TicketsByChoosingDepartureTime()
         {
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
                 .OpenCloseAdditionalCriterias()
                 .SetHours("21")
-                .OpenCloseAdditionalCriterias()
                 .Search();
 
             webTable = new WebTable();
-            Assert.IsTrue(webTable.CheckHours("//*[contains(@class,'opTDStackOne')]//div[contains(@class,'opDepartTime')]","21"));
+            Assert.IsTrue(webTable.CheckHours("//div[contains(@class,'opDepartTime')]","21"));
         }
 
         [Test]
         [Description("Using share button")]
         [Category("ButtonChecking")]
-        public void ShareButton() //passed
+        public void ShareButton()
         {
             mainPage = new MainPage(Driver)
                 .OpenSharelist()
                 .ClickFacebookBtn();
 
-            //Assert.AreEqual("https://www.nationalrail.co.uk/", Driver.Url);
            Assert.AreEqual(Driver.WindowHandles.Count(), 2);
         }
 
         [Test]
         [Description("call recent journeys")]
         [Category("SearchTest")]
-        public void TakeJourneyFromRecent() //not
+        public void TakeJourneyFromRecent()
         {
             mainPage = new MainPage(Driver)
                 .InputStationsAndSeacrh(RouteCreator.WithAllProperties())
